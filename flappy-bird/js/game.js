@@ -3,8 +3,9 @@ class Game {
     this.canvas = canvas;
     this.ctx = ctx;
     this.backgroundColor = backgroundColor;
-    this.bird = new Bird(0, 0, BIRD_RADIUS, BIRD_COLOR);
-    this.pipe = new Pipe(0, 0, PIPE_WIDTH, 30, PIPE_COLOR);
+    console.log(BIRD_RADIUS / this.canvas.width);
+    this.bird = new Bird(0, 0, this.canvas.width / BIRD_RADIUS, BIRD_COLOR);
+    this.pipe = new Pipe(0, 0, this.canvas.width / PIPE_WIDTH, 30, PIPE_COLOR);
   }
 
   update() {
