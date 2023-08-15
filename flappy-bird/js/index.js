@@ -12,6 +12,27 @@ const ctx = canvas.getContext("2d");
 
 const game = new Game(canvas, ctx, BACKGROUND_COLOR);
 
+let lastPressed = "";
+document.addEventListener("keydown", (e) => {
+  if (e.code !== lastPressed) {
+    switch (e.code) {
+      case "Space":
+        game.keys.space = true;
+        lastPressed = e.code;
+        break;
+    }
+  }
+});
+
+document.addEventListener("keyup", (e) => {
+  switch (e.code) {
+    case "Space":
+      game.keys.space = false;
+      lastPressed = "";
+      break;
+  }
+});
+
 function animate() {
   requestAnimationFrame(animate);
   game.update();
