@@ -4,8 +4,8 @@ if (navigator.userAgentData.mobile) {
   canvas.height = innerHeight - 20;
   canvas.width = innerWidth - 20;
 } else {
-  canvas.height = 1000;
-  canvas.width = 700;
+  canvas.height = innerHeight - 20;
+  canvas.width = ((innerHeight - 20) * 9) / 16;
 }
 
 const ctx = canvas.getContext("2d");
