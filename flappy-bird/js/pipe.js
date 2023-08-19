@@ -14,6 +14,33 @@ class Pipe {
     this.bottom = canvasHeight - (centery + spacing / 2);
 
     this.speed = speed;
+
+    this.hitted = false;
+    this.counted = false;
+  }
+
+  hits(bird) {
+    if (
+      bird.y - bird.radius < this.top ||
+      bird.y + bird.radius > this.canvasHeight - this.bottom
+    ) {
+      if (
+        bird.x + bird.radius > this.x &&
+        bird.x - bird.radius < this.x + this.width
+      ) {
+        this.hitted = true;
+        return true;
+      }
+    }
+    return false;
+  }
+
+  scored(bird) {
+    if (bird.x > this.x && !this.hitted && !this.counted) {
+      this.counted = true;
+      return true;
+    }
+    return false;
   }
 
   update() {

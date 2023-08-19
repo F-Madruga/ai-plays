@@ -1,5 +1,5 @@
 class Bird {
-  constructor(x, y, radius, color, gravity, lift) {
+  constructor(x, y, radius, color, gravity, lift, canvasHeight) {
     this.x = x;
     this.y = y;
     this.radius = radius;
@@ -7,6 +7,7 @@ class Bird {
     this.velocity = 0;
     this.lift = lift;
     this.gravity = gravity;
+    this.canvasHeight = canvasHeight;
   }
 
   fly() {
@@ -18,8 +19,8 @@ class Bird {
     this.y += this.velocity;
   }
 
-  bottomTop(height) {
-    return this.y > height - this.r || this.y < this.r;
+  bottomTop() {
+    return this.y > this.canvasHeight - this.radius || this.y < this.radius;
   }
 
   draw(ctx) {

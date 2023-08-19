@@ -4,6 +4,7 @@ class Game {
     this.ctx = ctx;
     this.backgroundColor = backgroundColor;
     this.frames = 0;
+    this.score = 0;
     this.keys = {
       space: false,
     };
@@ -14,7 +15,8 @@ class Game {
       this.canvas.width / BIRD_RADIUS,
       BIRD_COLOR,
       GRAVITY,
-      LIFT
+      LIFT,
+      this.canvas.height
     );
 
     this.pipes = [];
@@ -43,9 +45,8 @@ class Game {
     this.drawBackground();
 
     this.bird.update();
-    if (this.bird.bottomTop(this.canvas.height)) {
-      this.bird.x = this.canvas.width / 5;
-      this.bird.y = this.canvas.height / 2;
+    if (this.bird.bottomTop()) {
+      // console.log("hit top or bottom");
     }
     if (this.keys.space === true) {
       this.keys.space = false;
@@ -68,6 +69,12 @@ class Game {
     }
 
     for (let i = 0; i < this.pipes.length; i++) {
+      if (this.pipes[i].hits(this.bird)) {
+        // console.log("hit");
+      }
+      if (this.pipes[0].scored(this.bird)) {
+        this.score++;
+      }
       this.pipes[i].update();
       this.pipes[i].draw(this.ctx);
       if (this.pipes[i].offscreen()) {
@@ -81,8 +88,6 @@ class Game {
 
     this.pipesToRemove = [];
 
-    // this.pipe.update();
-
-    // this.pipe.draw(this.ctx);
+    console.log(this.score);
   }
 }
