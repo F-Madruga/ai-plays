@@ -33,6 +33,10 @@ document.addEventListener("keyup", (e) => {
   }
 });
 
+canvas.addEventListener("click", (e) => {
+  game.keys.space = true;
+});
+
 function animate() {
   requestAnimationFrame(animate);
   game.update();
