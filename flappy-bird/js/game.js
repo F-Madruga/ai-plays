@@ -14,8 +14,8 @@ class Game {
       this.canvas.height / 2,
       this.canvas.width / BIRD_RADIUS,
       BIRD_COLOR,
-      GRAVITY,
-      LIFT,
+      this.canvas.height / GRAVITY,
+      this.canvas.height / LIFT,
       this.canvas.height
     );
 
